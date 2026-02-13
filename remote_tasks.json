@@ -1,7 +1,7 @@
 [
   {
     "id": "sign_extra",
-    "title": "限时活动签到",
+    "title": "测试",
     "desc": "云端更新：新增春节签到逻辑",
     "icon": "@drawable/ic_card_giftcard_black_48dp",
     "color": "#E91E63",

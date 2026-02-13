@@ -1,7 +1,7 @@
 [
     {
         "id": "remote_task_1",
-        "title": "新春限定任务",
+        "title": "新春你好",
         "desc": "自动领取春节限时营地礼包",
         "icon": "@drawable/ic_redeem_black_48dp",
         "color": "#FF5252",

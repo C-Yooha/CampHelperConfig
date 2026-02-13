@@ -1,18 +1,11 @@
 [
   {
-    "id": "new_year_sign",
-    "title": "春节限时签到",
-    "desc": "云端更新：自动领取春节红包",
-    "icon": "@drawable/ic_card_giftcard_black_48dp",
-    "color": "#FF0000",
-    "code": "function() { uiLog('🧨 正在执行春节签到...'); sleep(1000); uiLog('✅ 红包领取成功'); }"
-  },
-  {
-    "id": "extra_points",
-    "title": "营地额外积分",
-    "desc": "云端更新：完成隐藏积分任务",
-    "icon": "@drawable/ic_stars_black_48dp",
-    "color": "#FFD700",
-    "code": "function() { uiLog('🌟 正在获取额外积分...'); sleep(1000); uiLog('✅ 积分+10'); }"
+    "id": "auto_follow_verified",
+    "title": "关注任务",
+    "desc": "云端同步：自动关注3个认证大V",
+    "icon": "@drawable/ic_person_add_black_48dp",
+    "color": "#FF9800",
+    "code": "function() { const tk = storage.get('token', ''); const uid = storage.get('userid', ''); if (!tk || !uid) return uiLog('❌ 远程任务：未配置身份'); try { uiLog('🔍 正在获取推荐列表...'); let res = http.postJson('https://kohcamp.qq.com/user/getrecommendusers', { 'recommendPrivacy': 0, 'pageSize': 15, 'page': 0, 'confirmTypeEn': 'tuijian' }, { headers: { 'token': tk, 'userid': uid, 'User-Agent': 'okhttp/4.9.1' } }); let resData = res.body.json(); if (resData.returnCode !== 0) return uiLog('❌ 获取列表失败: ' + resData.returnMsg); let allUsers = resData.data.list || []; /* 筛选：有认证(userconfirm==1) 且 未关注(relation==5 代表未关注) */ let targetUsers = allUsers.filter(item => { let info = item.info || {}; let confirm = info.confirmInfo || {}; return confirm.userconfirm === 1 && info.relation === 5; }); uiLog('👥 发现可关注认证用户: ' + targetUsers.length + '位'); if (targetUsers.length === 0) return uiLog('ℹ️ 暂无符合条件的未关注大V'); /* 随机打乱并取前3个 */ targetUsers.sort(() => Math.random() - 0.5); let count = 0; for (let i = 0; i < Math.min(targetUsers.length, 3); i++) { let user = targetUsers[i].info.user.user; uiLog('➕ 正在关注: ' + user.nickName); let followRes = http.postJson('https://kohcamp.qq.com/user/addattention', { 'recommendPrivacy': 0, 'friendUserId': String(user.userId) }, { headers: { 'token': tk, 'userid': uid, 'User-Agent': 'okhttp/4.9.1' } }); let fData = followRes.body.json(); if (fData.returnCode == 0) { uiLog('✅ 关注成功: ' + user.nickName); count++; } else { uiLog('⚠️ ' + user.nickName + ': ' + fData.returnMsg); } sleep(1500); } uiLog('🏁 关注任务结束，共计完成: ' + count); } catch (e) { uiLog('❌ 关注任务异常: ' + e.message); } }"
   }
 ]
+

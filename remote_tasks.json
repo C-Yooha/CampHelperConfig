@@ -7,5 +7,13 @@
     "color": "#E91E63",
     "code": "function() { uiLog('🚀 正在执行远程签到逻辑...'); var res = http.get('https://example.com/api'); uiLog('✅ 远程任务完成'); }"
   }
+  {
+    "id": "sign_extra",
+    "title": "测试",
+    "desc": "云端更新：新增春节签到逻辑",
+    "icon": "@drawable/ic_card_giftcard_black_48dp",
+    "color": "#E91E63",
+    "code": "function() { uiLog('🚀 正在执行远程签到逻辑...'); var res = http.get('https://example.com/api'); uiLog('✅ 远程任务完成'); }"
+  }
 ]
 

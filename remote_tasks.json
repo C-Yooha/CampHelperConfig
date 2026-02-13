@@ -1,19 +1,18 @@
 [
   {
-    "id": "sign_extra",
-    "title": "测试",
-    "desc": "云端更新：新增春节签到逻辑",
+    "id": "new_year_sign",
+    "title": "春节限时签到",
+    "desc": "云端更新：自动领取春节红包",
     "icon": "@drawable/ic_card_giftcard_black_48dp",
-    "color": "#E91E63",
-    "code": "function() { uiLog('🚀 正在执行远程签到逻辑...'); var res = http.get('https://example.com/api'); uiLog('✅ 远程任务完成'); }"
-  }
+    "color": "#FF0000",
+    "code": "function() { uiLog('🧨 正在执行春节签到...'); sleep(1000); uiLog('✅ 红包领取成功'); }"
+  },
   {
-    "id": "sign",
-    "title": "测试",
-    "desc": "云端更新：新增春节签到逻辑",
-    "icon": "@drawable/ic_card_giftcard_black_48dp",
-    "color": "#E91E63",
-    "code": "function() { uiLog('🚀 正在执行远程签到逻辑...'); var res = http.get('https://example.com/api'); uiLog('✅ 远程任务完成'); }"
+    "id": "extra_points",
+    "title": "营地额外积分",
+    "desc": "云端更新：完成隐藏积分任务",
+    "icon": "@drawable/ic_stars_black_48dp",
+    "color": "#FFD700",
+    "code": "function() { uiLog('🌟 正在获取额外积分...'); sleep(1000); uiLog('✅ 积分+10'); }"
   }
 ]
-
